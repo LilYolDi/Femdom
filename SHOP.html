@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GREEN SHOP</title>
+
+<style>
+
+body{
+margin:0;
+background:#000;
+color:white;
+font-family:Arial,sans-serif;
+}
+
+header{
+background:#00ff66;
+color:#000;
+padding:12px;
+text-align:center;
+font-size:30px;
+font-weight:bold;
+box-shadow:0 0 30px #00ff66;
+}
+
+.search{
+text-align:center;
+padding:20px;
+}
+
+.search input{
+width:80%;
+max-width:500px;
+padding:15px;
+border-radius:10px;
+border:none;
+box-shadow:0 0 20px #00ff66;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#050505;
+border:2px solid #00ff66;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 0 20px #00ff66;
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.info{
+padding:15px;
+}
+
+.title{
+font-size:22px;
+}
+
+.price{
+color:#00ff66;
+font-size:24px;
+font-weight:bold;
+}
+
+.buy{
+width:100%;
+padding:12px;
+margin-top:15px;
+background:#00ff66;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.buy:hover{
+background:#00ffaa;
+}
+
+
+.add-btn{
+    position:absolute;
+    right:20px;
+    top:14px;
+
+    background:#00ff66;
+    color:#000;
+
+    border:none;
+    border-radius:8px;
+
+    padding:12px 18px;
+
+    font-weight:bold;
+    cursor:pointer;
+
+    box-shadow:0 0 20px #00ff66;
+}
+
+
+.add-btn:hover{
+    background:#4DFFB8;
+    box-shadow:0 0 35px #ff0033;
+}
+
+
+
+.menu-btn{
+    position:absolute;
+    right:190px;
+    top:14px;
+
+    background:#00ff66;
+    color:#000;
+
+    border:none;
+    border-radius:8px;
+
+    padding:12px 18px;
+
+    font-weight:bold;
+    cursor:pointer;
+
+    box-shadow:0 0 20px #00ff66;
+	
+}
+
+.menu-btn:hover{
+    background:#4DFFB8;
+    box-shadow:0 0 35px #0033;
+
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+🛒 PANDOR SHOP
+
+<button class="add-btn" onclick="openTelegram()">
+Подать объявление
+</button>
+
+<button class="menu-btn" onclick="openMenu()">
+О Нас
+</button>
+
+
+</header>
+
+
+<div class="search">
+<input id="search" placeholder="Поиск товара">
+</div>
+
+
+<div class="products" id="products"></div>
+
+
+
+<script>
+
+
+const products=[
+
+{
+name:"Игровая мышка",
+price:"699 грн",
+image:"images/1.jpg"
+},
+
+{
+name:"Клавиатура RGB",
+price:"1299 грн",
+image:"images/keyboard.jpg"
+},
+
+{
+name:"Наушники",
+price:"999 грн",
+image:"images/headphones.jpg"
+},
+
+{
+name:"Монитор 24",
+price:"4999 грн",
+image:"images/monitor.jpg"
+},
+
+{
+name:"SSD 1 ТБ",
+price:"2499 грн",
+image:"images/ssd.jpg"
+},
+
+{
+name:"Игровое кресло",
+price:"5999 грн",
+image:"images/chair.jpg"
+},
+
+{
+name:"Веб-камера Full HD",
+price:"899 грн",
+image:"images/camera.jpg"
+},
+
+{
+name:"Микрофон USB",
+price:"1499 грн",
+image:"images/microphone.jpg"
+},
+
+{
+name:"Коврик RGB",
+price:"499 грн",
+image:"images/mousepad.jpg"
+},
+
+{
+name:"Power Bank",
+price:"1199 грн",
+image:"images/powerbank.jpg"
+},
+
+{
+name:"Смарт часы",
+price:"2499 грн",
+image:"images/watch.jpg"
+},
+
+{
+name:"Bluetooth колонка",
+price:"1799 грн",
+image:"images/speaker.jpg"
+},
+
+{
+name:"Ноутбук Gaming",
+price:"32999 грн",
+image:"images/laptop.jpg"
+},
+
+{
+name:"Видеокарта RTX",
+price:"24999 грн",
+image:"images/gpu.jpg"
+},
+
+{
+name:"Процессор Ryzen 7",
+price:"11999 грн",
+image:"images/cpu.jpg"
+},
+
+{
+name:"Оперативная память 16GB",
+price:"2299 грн",
+image:"images/ram.jpg"
+},
+
+{
+name:"Корпус ПК",
+price:"1999 грн",
+image:"images/case.jpg"
+},
+
+{
+name:"Блок питания",
+price:"2699 грн",
+image:"images/psu.jpg"
+},
+
+{
+name:"Wi-Fi роутер",
+price:"1899 грн",
+image:"images/router.jpg"
+},
+
+{
+name:"Флешка 128GB",
+price:"499 грн",
+image:"images/usb.jpg"
+},
+
+{
+name:"HDD 2TB",
+price:"2999 грн",
+image:"images/hdd.jpg"
+},
+
+{
+name:"Геймпад",
+price:"1299 грн",
+image:"images/gamepad.jpg"
+},
+
+{
+name:"Планшет",
+price:"7999 грн",
+image:"images/tablet.jpg"
+},
+
+{
+name:"Смартфон Pro",
+price:"15999 грн",
+image:"images/phone.jpg"
+},
+
+{
+name:"Зарядка Type-C",
+price:"299 грн",
+image:"images/charger.jpg"
+},
+
+{
+name:"LED RGB лампа",
+price:"399 грн",
+image:"images/led.jpg"
+}
+
+];
+
+
+
+let box=document.getElementById("products");
+
+
+function showProducts(list){
+
+box.innerHTML="";
+
+
+list.forEach((product,index)=>{
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+<img src="${product.image}">
+
+<div class="info">
+
+<div class="title">
+${product.name}
+</div>
+
+<div class="price">
+${product.price}
+</div>
+
+
+<button class="buy" onclick="buy(${index})">
+Купить
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+}
+
+
+
+function buy(index){
+
+let product=products[index].name;
+
+
+window.open(
+
+"https://t.me/Kukuruzaa7?text="+
+encodeURIComponent("Хочу заказать: "+product),
+
+"_blank"
+
+);
+
+}
+
+
+
+showProducts(products);
+
+
+
+document.getElementById("search").oninput=function(){
+
+let text=this.value.toLowerCase();
+
+
+let result=products.filter(product=>
+
+product.name.toLowerCase().includes(text)
+
+);
+
+
+showProducts(result);
+
+};
+
+showProducts(products);
+
+
+function openTelegram(){
+
+window.open(
+"https://t.me/Kukuruzaa7?text=" +
+encodeURIComponent("Хочу подать объявление"),
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+</html>
