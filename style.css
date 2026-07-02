@@ -406,3 +406,10 @@ background:#ff0000;
 .side-menu a:hover{
     background: #ff2020;
 }
+
+
+
+.upload-btn{
+    font-size: 14px;   /* уменьшает текст */
+    padding: 11px 14px; /* уменьшает саму кнопку */
+}
