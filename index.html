@@ -1,101 +1,311 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-<title>Y-FETISH</title>
+body{
+    background:#0d0d0d;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-<link rel="stylesheet" href="style.css">
-</head>
+header{
+    width:100%;
+    height:70px;
+    background:#171717;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 30px;
+    border-bottom:1px solid #262626;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
 
-<body>
+.logo{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:1px;
+}
 
-<header>
-  <div class="logo">
-    <span class="red">Y</span>-FETISH
-  </div>
+.red{
+    color:#ff1a1a;
+}
 
-  <div class="search">
-    <input type="text" placeholder="Поиск видео...">
-    <button>🔍</button>
-  </div>
+.search{
+    display:flex;
+    align-items:center;
+}
 
-  <a href="upload.html" class="upload-btn">➕ Добавить видео</a>
-</header>
+.search input{
+    width:350px;
+    height:42px;
+    background:#252525;
+    border:none;
+    color:white;
+    padding:0 15px;
+    border-radius:8px 0 0 8px;
+    outline:none;
+    font-size:16px;
+}
 
-<main>
+.search button{
+    height:42px;
+    width:60px;
+    border:none;
+    background:#ff1a1a;
+    color:white;
+    cursor:pointer;
+    border-radius:0 8px 8px 0;
+    font-size:18px;
+}
 
-<!-- ЛЕВАЯ ЧАСТЬ: ВИДЕО -->
-<section class="player">
+main{
+    display:grid;
+    grid-template-columns:2fr 420px;
+    gap:30px;
+    padding:30px;
+}
 
-  <video id="video" controls poster="poster.jpg">
-    <source src="videos/1.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видео.
-  </video>
+.player video{
+    width:100%;
+    border-radius:15px;
+    background:black;
+}
 
-  <!-- УПРАВЛЕНИЕ -->
-  <div class="controls">
-    <button>▶️</button>
-    <button>⏸</button>
-    <button>🔊</button>
-    <button>⛶</button>
-  </div>
+.controls{
+    display:flex;
+    gap:12px;
+    margin-top:15px;
+}
 
-  <!-- ИНФО -->
-  <div class="info">
-    <h1>Добро пожаловать в Y-FETISH</h1>
+.controls button{
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:12px;
+    background:#252525;
+    color:white;
+    cursor:pointer;
+    font-size:22px;
+    transition:.2s;
+}
 
-    <div class="stats">
-      <span>👁 1523</span>
-      <span>•</span>
-      <span>12 минут</span>
-      <span>•</span>
-      <span>Сегодня</span>
-    </div>
-  </div>
+.controls button:hover{
+    background:#ff1a1a;
+}
 
-  <!-- ЛАЙКИ -->
-  <div class="buttons">
-    <button>👍 <span>352</span></button>
-    <button>👎 <span>18</span></button>
-  </div>
+.info{
+    margin-top:20px;
+}
 
-  <!-- ОПИСАНИЕ (ВНИЗУ) -->
-  <div class="description">
-    <h3>Описание</h3>
-    <p>
-     Две русской Госпожи, заставляют рабыню, нюхать им потные носки.    </p>
-  </div>
+.info h1{
+    font-size:28px;
+}
 
-</section>
+.stats{
+    margin-top:10px;
+    color:#a8a8a8;
+    display:flex;
+    gap:12px;
+    font-size:15px;
+}
 
-<!-- ПРАВАЯ ЧАСТЬ: ВИДЕО СПИСОК -->
-<aside>
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
 
-  <h2>Следующие видео</h2>
+.buttons button{
+    background:#252525;
+    border:none;
+    color:white;
+    padding:14px 24px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+    transition:.2s;
+}
 
-  <div class="card">
-    <img src="https://picsum.photos/300/170?1">
-    <h3>Первое видео</h3>
-    <p>12 000 просмотров</p>
-  </div>
+.buttons button:hover{
+    background:#ff1a1a;
+}
 
-  <div class="card">
-    <img src="https://picsum.photos/300/170?2">
-    <h3>Второе видео</h3>
-    <p>8 200 просмотров</p>
-  </div>
+.description{
+    margin-top:25px;
+    background:#171717;
+    padding:20px;
+    border-radius:15px;
+    line-height:1.8;
+    color:#d8d8d8;
+}
 
-  <div class="card">
-    <img src="https://picsum.photos/300/170?3">
-    <h3>Третье видео</h3>
-    <p>3 100 просмотров</p>
-  </div>
+aside h2{
+    margin-bottom:20px;
+}
 
-</aside>
+.card{
+    background:#171717;
+    border-radius:15px;
+    overflow:hidden;
+    margin-bottom:20px;
+    transition:.25s;
+    cursor:pointer;
+}
 
-</main>
+.card:hover{
+    transform:translateY(-4px);
+}
 
-</body>
-</html>
+.card img{
+    width:100%;
+    display:block;
+}
+
+.card h3{
+    padding:15px;
+    font-size:18px;
+}
+
+.card p{
+    padding:0 15px 15px;
+    color:#9f9f9f;
+}
+
+@media(max-width:1000px){
+
+main{
+    grid-template-columns:1fr;
+}
+
+.search input{
+    width:180px;
+}
+
+header{
+    padding:15px;
+}
+
+.logo{
+    font-size:26px;
+}
+
+}
+
+@media(max-width:700px){
+
+header{
+    flex-direction:column;
+    height:auto;
+    gap:15px;
+    padding:15px;
+}
+
+.search{
+    width:100%;
+}
+
+.search input{
+    width:100%;
+}
+
+.controls{
+    flex-wrap:wrap;
+}
+
+.buttons{
+    flex-wrap:wrap;
+}
+
+.info h1{
+    font-size:22px;
+}
+
+}
+
+
+.upload-btn{
+    margin-left:20px;
+    background:#ff1a1a;
+    color:#fff;
+    text-decoration:none;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:700;
+    transition:.2s;
+    white-space:nowrap;
+}
+
+.upload-btn:hover{
+    background:#d10000;
+}
+
+
+
+
+.menu-btn{
+position:fixed;
+top:15px;
+right:20px;
+width:50px;
+height:50px;
+border:none;
+border-radius:10px;
+background:#ff0000;
+color:#fff;
+font-size:24px;
+cursor:pointer;
+z-index:1001;
+}
+
+.side-menu{
+position:fixed;
+top:0;
+right:-320px;
+width:300px;
+height:100%;
+background:#181818;
+transition:.35s;
+padding:25px;
+z-index:1000;
+box-shadow:-5px 0 20px rgba(0,0,0,.5);
+}
+
+.side-menu.open{
+right:0;
+}
+
+.close-btn{
+background:none;
+border:none;
+color:white;
+font-size:28px;
+cursor:pointer;
+float:right;
+}
+
+.side-menu h2{
+margin-top:40px;
+margin-bottom:30px;
+}
+
+.side-menu a{
+display:block;
+padding:15px;
+margin-bottom:10px;
+background:#262626;
+color:white;
+text-decoration:none;
+border-radius:10px;
+transition:.2s;
+}
+
+.side-menu a:hover{
+background:#ff0000;
+}
+
+
+
